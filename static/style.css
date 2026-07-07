@@ -1,0 +1,185 @@
+/* ── CSS variables for light/dark themes ── */
+:root[data-theme="light"] {
+    --bg: #f3f0ff;
+    --surface: #ffffff;
+    --primary: #7c3aed;
+    --primary-hover: #6d28d9;
+    --text: #1e1b2e;
+    --text-muted: #6b7280;
+    --border: #ddd6fe;
+    --pre-bg: #faf5ff;
+    --shadow: rgba(124, 58, 237, 0.10);
+}
+
+:root[data-theme="dark"] {
+    --bg: #0f0b1a;
+    --surface: #1a1530;
+    --primary: #a78bfa;
+    --primary-hover: #c4b5fd;
+    --text: #f3f0ff;
+    --text-muted: #a1a1aa;
+    --border: #2e2450;
+    --pre-bg: #13101f;
+    --shadow: rgba(0, 0, 0, 0.40);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 48px 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ── Header row ── */
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+h1 {
+    font-size: 1.9rem;
+    color: var(--primary);
+}
+
+.theme-toggle {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: transform 0.2s;
+}
+
+.theme-toggle:hover {
+    transform: rotate(20deg) scale(1.1);
+}
+
+/* ── Form ── */
+form {
+    background: var(--surface);
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px var(--shadow);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary);
+}
+
+select {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+select:focus {
+    border-color: var(--primary);
+}
+
+button[type="submit"] {
+    padding: 11px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button[type="submit"]:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* ── Result ── */
+.result-box {
+    margin-top: 32px;
+}
+
+h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+pre {
+    background: var(--pre-bg);
+    color: var(--text);
+    padding: 24px;
+    border-radius: 12px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    line-height: 1.4;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 16px var(--shadow);
+}
+
+/* ── Fade-in animation ── */
+/*@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}*/
