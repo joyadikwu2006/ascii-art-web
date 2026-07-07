@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>ASCII ART Generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-row">
+            <h1>🎨 ASCII ART Generator</h1>
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">🌙</button>
+        </div>
+
+        <form action="/ascii-art" method="POST">
+            <label for="text">✏️ Text to convert:</label>
+            <input type="text" id="text" name="text" placeholder="type something..." value="{{.Text}}" required>
+
+            <label for="bannerStyle">🎭 Banner style:</label>
+            <select name="bannerStyle" id="bannerStyle">
+                <option value="standard" {{if eq .BannerStyle "standard"}}selected{{end}}>Standard</option>
+                <option value="shadow" {{if eq .BannerStyle "shadow"}}selected{{end}}>Shadow</option>
+                <option value="thinkertoy" {{if eq .BannerStyle "thinkertoy"}}selected{{end}}>Thinkertoy</option>
+            </select>
+
+            <button type="submit">⚡ Generate</button>
+        </form>
+
+        {{if .AsciiArt}}
+        <div class="result-box">
+            <h2>✨ Result:</h2>
+            <pre class="fade-in">{{.AsciiArt}}</pre>
+        </div>
+        {{end}}
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const btn = document.querySelector('.theme-toggle');
+            if (html.getAttribute('data-theme') === 'light') {
+                html.setAttribute('data-theme', 'dark');
+                btn.textContent = '☀️';
+            } else {
+                html.setAttribute('data-theme', 'light');
+                btn.textContent = '🌙';
+            }
+        }
+    </script>
+</body>
+</html>
